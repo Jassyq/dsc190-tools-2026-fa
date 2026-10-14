@@ -121,7 +121,7 @@ Git CLI Basics (Undoing)
 <span class="exercise">**Exercise**</span>
 ===
 
-Oops! You accidentally delete your whole project by running `rm -rf` inside the project directory.
+Oops! You accidentally your whole project by running `rm -rf` inside the project directory.
 
 How do you recover from this?
 
