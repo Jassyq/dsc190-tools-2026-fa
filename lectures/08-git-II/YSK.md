@@ -41,7 +41,7 @@
     - **Answer**: `git switch --detach a1b2c3`
 
 - What is a detached HEAD?
-    - **Answer**: A state where HEAD points to a commit that is not pointed to by any branch.
+    - **Answer**: A state where HEAD points directly at a commit instead of at a branch.
 
 - Why is committing while in a detached HEAD state dangerous?
     - **Answer**: The new commits are not reachable from any branch, so they will eventually be garbage collected.
