@@ -266,28 +266,30 @@ Branch Theory
 =============
 
 - Branches are just "pointers" to specific commits.
+- HEAD is a pointer, too. Normally, it points to a *branch*.
 
 Recall
 ======
 
-- HEAD is a pointer to the *current* commit.
+- HEAD tells Git which branch (and so which commit) is *current*.
 - Consider:
 ```bash
 git switch alpha
 ```
 - This:
-    - Moves HEAD to point to the commit that `alpha` points to.
+    - Moves HEAD to point to the branch `alpha`.
     - Updates the staging area and work tree to match that commit.
 
 Detached HEAD
 =============
 
-- In normal operation, HEAD points to a commit that is also pointed to by a branch.
-- But you can move the HEAD to *any* commit:
+- In normal operation, HEAD points to a branch, and the branch points to a commit.
+    - When you commit, the branch moves forward, and HEAD comes along with it.
+- But you can also point HEAD directly at *any* commit:
 ```bash
 git switch --detach <commit-hash>
 ```
-- This is called a <span class="term">**detached HEAD**</span>.
+- This is called a <span class="term">**detached HEAD**</span>: HEAD points at a commit instead of a branch.
 
 <span class="exercise">**Demo**</span>
 ===
@@ -304,7 +306,8 @@ Detached HEAD
 - Detaching the HEAD is useful for going back in time *temporarily*.
 <!-- pause -->
 - However, it can be <span class="bad">**dangerous**</span>.
-    - Commits made in a detached HEAD state are not reachable from any branch.
+    - When you commit in a detached HEAD state, only HEAD moves; no branch points to the new commits.
+    - So they are not reachable from any branch.
     - These commits will eventually be garbage collected by Git, leading to data loss.
     - **Solution**: detach HEAD, then create a new branch.
 
