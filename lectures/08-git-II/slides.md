@@ -57,6 +57,8 @@ git switch --create <branch-name>
 git switch -c <branch-name>
 ```
 
+- This "splits the timeline".
+
 Switching Branches
 ==================
 
@@ -79,6 +81,106 @@ Create a new repo, make a few commits, then:
 
 ---
 
+
+![image:w:70%](./fig/branch-1-first-commit.png)
+
+After:
+```bash
+git commit -m "First commit."
+```
+
+---
+
+![image:w:70%](./fig/branch-1-first-commit.png)
+
+Before:
+```bash
+git commit -m "Second commit."
+```
+
+---
+
+![image:w:70%](./fig/branch-2-second-commit.png)
+
+After:
+```bash
+git commit -m "Second commit."
+```
+
+---
+
+![image:w:70%](./fig/branch-2-second-commit.png)
+
+Before:
+```bash
+git switch -c alpha
+```
+
+---
+
+![image:w:70%](./fig/branch-3-switch-create.png)
+
+After:
+```bash
+git switch -c alpha
+```
+
+---
+
+![image:w:70%](./fig/branch-3-switch-create.png)
+
+Before:
+```bash
+git commit -m "Commit on alpha."
+```
+
+---
+
+![image:w:70%](./fig/branch-4-commit-alpha.png)
+
+After:
+```bash
+git commit -m "Commit on alpha."
+```
+
+---
+
+![image:w:70%](./fig/branch-4-commit-alpha.png)
+
+Before:
+```bash
+git switch main
+```
+
+---
+
+![image:w:70%](./fig/branch-5-switch-main.png)
+
+After:
+```bash
+git switch main
+```
+
+---
+
+![image:w:70%](./fig/branch-5-switch-main.png)
+
+Before:
+```bash
+git commit -m "Commit on main."
+```
+
+---
+
+![image:w:70%](./fig/branch-6-commit-main.png)
+
+After:
+```bash
+git commit -m "Commit on main."
+```
+
+---
+
 <!-- new_lines: 4 -->
 <!-- alignment: center -->
 
@@ -96,11 +198,30 @@ Git Merging
 git switch main
 git merge <other-branch-name>
 ```
+- This creates a new commit on main that combines the changes from both branches.
 
 <span class="exercise">**Demo**</span>
 ===
 
 - Merge the branch you created in the previous demo back into `main`.
+
+---
+
+![image:w:70%](./fig/branch-6-commit-main.png)
+
+Before:
+```bash
+git merge alpha
+```
+
+---
+
+![image:w:70%](./fig/branch-7-merge.png)
+
+After:
+```bash
+git merge alpha
+```
 
 Merge Conflicts
 ===============
@@ -136,7 +257,7 @@ Hello, Git!
 Aborting a Merge
 ================
 
-- We can <span class="term">**abort**</span> a merge to return to the pre-merge state:
+- We can <span class="term">**abort**</span> a merge to give up and return to the pre-merge state:
 
 ```bash
 git merge --abort
@@ -280,6 +401,29 @@ git switch alpha
     - Moves HEAD to point to the branch `alpha`.
     - Updates the staging area and work tree to match that commit.
 
+Committing
+==========
+
+- When you make a commit, *both* the branch and HEAD pointers move forward to the new commit.
+
+---
+
+![image:w:80%](./fig/commit-before.png)
+
+Before:
+```bash
+git commit -m "Add feature."
+```
+
+---
+
+![image:w:80%](./fig/commit-after.png)
+
+After:
+```bash
+git commit -m "Add feature."
+```
+
 Detached HEAD
 =============
 
@@ -290,6 +434,25 @@ Detached HEAD
 git switch --detach <commit-hash>
 ```
 - This is called a <span class="term">**detached HEAD**</span>: HEAD points at a commit instead of a branch.
+
+---
+
+![image:w:70%](./fig/detach-before.png)
+
+Before:
+```bash
+git switch --detach d4e5f6
+```
+
+---
+
+![image:w:70%](./fig/detach-after.png)
+
+After:
+```bash
+git switch --detach d4e5f6
+# HEAD is detached!
+```
 
 <span class="exercise">**Demo**</span>
 ===
@@ -310,6 +473,54 @@ Detached HEAD
     - So they are not reachable from any branch.
     - These commits will eventually be garbage collected by Git, leading to data loss.
     - **Solution**: detach HEAD, then create a new branch.
+
+---
+
+![image:w:70%](./fig/detach-after.png)
+
+Before:
+```bash
+git commit -m "Detached commit."
+```
+
+---
+
+![image:w:70%](./fig/detach-commit.png)
+
+After:
+```bash
+git commit -m "Detached commit."
+```
+
+---
+
+![image:w:70%](./fig/detach-commit.png)
+
+Before:
+```bash
+git switch main
+```
+
+---
+
+![image:w:70%](./fig/detach-switch-main.png)
+
+After:
+```bash
+git switch main
+```
+
+---
+
+![image:w:70%](./fig/detach-switch-main.png)
+
+Before Git garbage collects.
+
+---
+
+![image:w:70%](./fig/detach-gc.png)
+
+After git garbage collects.
 
 This Week's Assignment
 ======================

@@ -1,0 +1,15 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{gitfig}
+\begin{document}
+\begin{gitfigure}
+  \gitbbox
+  \gitcommitat{a1b2c3}{0}{0}
+  \gitcommitat{d4e5f6}{1}{0}
+  \gitparent{d4e5f6}{a1b2c3}
+  \gitcommitat{b7c8d9}{2}{1}
+  \gitparent{b7c8d9}{d4e5f6}
+  \gitbranchat{d4e5f6}{main}
+  \gitbranchat[below]{b7c8d9}{alpha}
+  \githeadat{main}
+\end{gitfigure}
+\end{document}
