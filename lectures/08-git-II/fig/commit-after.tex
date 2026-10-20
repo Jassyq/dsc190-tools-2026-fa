@@ -1,0 +1,11 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{gitfig}
+\begin{document}
+\begin{gitfigure}
+  % fixed bounding box so before/after figures are the same size
+  \path[use as bounding box] (-0.9, 4.2) rectangle (7.9, 1.8);
+  \gitcommits{a1b2c3, d4e5f6, 9e5e6a, b7c8d9}
+  \gitbranch{b7c8d9}{main}
+  \githeadbranch{b7c8d9}
+\end{gitfigure}
+\end{document}
