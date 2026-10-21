@@ -346,3 +346,55 @@ Why?
 
 - Merging something into main is a big deal, especially if main is "live".
 - A PR gives an opportunity for your colleagues/boss to review it first.
+
+
+---
+
+<!-- new_lines: 4 -->
+<!-- alignment: center -->
+
+![image:w:70%](../COMMON/logo.png)
+
+**<span class="term">Worktrees</span>**
+
+"The" Worktree
+==============
+
+- By default, you can only have one branch "checked out" at a time.
+- The directory containing this checkout is the <span class="term">**worktree**</span> (or <span class="term">**working tree**</span>).
+- When you switch branches, the files in this directory are **replaced**.
+
+"The" Worktree
+==============
+
+- Sometimes, you'd like to have multiple branches checked out at the same time.
+- Example: I am working on Fall 2026 lecture slides, but I want to see what the Spring 2026 slides look like.
+- Git supports this via multiple <span class="term">**worktrees**</span>.
+
+Creating a New Worktree
+=======================
+
+- To create a new worktree, use the command:
+
+```bash
+git worktree add <path> <branch-or-commit>
+```
+
+- This "checks out" the specified branch or commit into a new directory at `<path>`.
+- It is like having a second copy of the repo.
+
+Deleting a Worktree
+===================
+
+- When you're done, you can delete a worktree with:
+
+```bash
+git worktree remove <path>
+```
+
+Agents
+======
+
+- When working with AI agents, you'll often have them do work *in parallel*.
+- Each agent can create its own branch and worktree.
+- The supervising agent merges the results of the other agents into your main worktree.

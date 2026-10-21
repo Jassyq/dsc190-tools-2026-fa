@@ -30,3 +30,6 @@
 
 - After squash-merging a branch `feature` into `main`, what command deletes the `feature` branch?
     - **Answer**: `git branch -D feature`
+
+- What Git feature lets several AI agents work on the same repository in parallel, each on its own branch in its own directory?
+    - **Answer**: Worktrees (`git worktree`).
